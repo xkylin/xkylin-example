@@ -1,0 +1,22 @@
+dependencies {
+        compile (
+			"com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion",
+            "com.fasterxml.jackson.core:jackson-core:$jacksonVersion",
+            "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+            "com.github.subchen:jetbrick-template-springmvc:$jetbrickTemplateVersion",
+            "org.springframework:spring-core:$springFrameworkVersion",
+            "org.springframework:spring-beans:$springFrameworkVersion",
+            "org.springframework:spring-context:$springFrameworkVersion",
+            "org.springframework:spring-context-support:$springFrameworkVersion",
+            "org.springframework:spring-web:$springFrameworkVersion",
+            "org.springframework:spring-webmvc:$springFrameworkVersion",
+            "org.apache.shiro:shiro-core:$shiroVersion",
+            "org.apache.shiro:shiro-web:$shiroVersion",
+            "org.apache.shiro:shiro-aspectj:$shiroVersion",
+            "org.apache.shiro:shiro-ehcache:$shiroVersion",
+            "org.apache.shiro:shiro-quartz:$shiroVersion",
+            "org.apache.shiro:shiro-spring:$shiroVersion",
+            "jstl:jstl:$jstlVersion"
+        )
+        providedCompile "javax.servlet:javax.servlet-api:$servletApiVersion"
+}		

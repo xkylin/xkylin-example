@@ -10,6 +10,8 @@ dependencies {
             "org.springframework:spring-context-support:$springFrameworkVersion",
             "org.springframework:spring-web:$springFrameworkVersion",
             "org.springframework:spring-webmvc:$springFrameworkVersion",
+            "commons-fileupload:commons-fileupload:$commonsFileuploadVersion",
+            "commons-io:commons-io:$commonsIOVersion",
             "org.apache.shiro:shiro-core:$shiroVersion",
             "org.apache.shiro:shiro-web:$shiroVersion",
             "org.apache.shiro:shiro-aspectj:$shiroVersion",

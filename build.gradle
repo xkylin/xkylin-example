@@ -96,6 +96,9 @@ subprojects {
         //CommonsCodec
         commonsCodecVersion = '1.10'
 
+        //CommonsFileupload
+        commonsFileuploadVersion = '1.3.3'
+
         //HttpComponentsClient
         httpComponentsClientVersion = '4.5.3'
 

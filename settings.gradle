@@ -1,0 +1,3 @@
+rootProject.name = 'xkylin-example'
+
+include 'xkylin-example-springmvc-web'

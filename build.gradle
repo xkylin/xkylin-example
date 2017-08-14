@@ -1,0 +1,227 @@
+/**
+ * 配置根项目及所有子项目
+ */
+allprojects {
+    repositories {
+//        maven {
+//            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+//        }
+        maven {
+            url 'http://192.168.0.129/repository/comsys/'
+        }
+//        mavenCentral()
+    }
+
+    task createJavaProject << {
+        sourceSets*.java.srcDirs*.each { it.mkdirs() }
+        sourceSets*.resources.srcDirs*.each { it.mkdirs()}
+    }
+
+    task createScalaProject << {
+        sourceSets*.scala.srcDirs*.each { it.mkdirs() }
+        sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+    }
+
+    task createGroovyProject << {
+        sourceSets*.groovy.srcDirs*.each { it.mkdirs() }
+        sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+    }
+
+    task createThriftJavaProject << {
+        sourceSets*.thrift-java.srcDirs*.each { it.mkdirs() }
+        sourceSets*.resources.srcDirs*.each { it.mkdirs()}
+    }
+}
+
+/**
+ * 配置所有子项目（不包括根项目）
+ */
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    version = '1.0.0'
+
+    [compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
+
+    //定义Project的属性，此处为使用ext闭包方式定义
+    //也可以通过命令行gradle -P [properties="values"] [taskName]，在命令行制定Project属性的值
+    ext {
+        //SpringFramework
+        springFrameworkVersion = '4.3.10.RELEASE'
+
+        //SpringDataMongodb
+        springDataMongodbVersion = '1.10.6.RELEASE'
+
+        //SpringDataRedis
+        springDataRedisVersion = '1.8.6.RELEASE'
+
+        //SpringDataJPA
+        springDataJPAVersion = '1.11.6.RELEASE'
+
+        //SpringAMQP
+        springRabbitVersion = '1.7.3.RELEASE'
+
+        //SpringKafka
+        springKafkaVersion = '1.2.2.RELEASE'
+
+        //SpringBoot
+        springBootStarterWeb = '1.5.6.RELEASE'
+
+        //Hibernate
+        hibernateVersion = '5.2.10.Final'
+
+        //Mybatis
+        mybatisVersion = '3.4.4'
+
+        //MybatisSpring
+        mybatisSpringVersion = '1.3.1'
+
+        //MybatisPagehelper（分页插件）
+        pagehelperVersion = '5.0.4'
+
+        /* Apache */
+        //CommonsLang
+        commonsLangVersion = '3.6'
+
+        //CommonsCollections4
+        commonsCollections4Version = '4.1'
+
+        //CommonsIO
+        commonsIOVersion = '2.5'
+
+        //CommonsCodec
+        commonsCodecVersion = '1.10'
+
+        //HttpComponentsClient
+        httpComponentsClientVersion = '4.5.3'
+
+        //CXF
+        cxfVersion = '3.1.12'
+
+        //ActiveMQ
+        activemqVersion = '5.15.0'
+
+        //Shiro
+        shiroVersion = '1.3.2'
+
+        //Thrift
+        thriftVersion = '0.10.0'
+
+        /* DS */
+        //Tomcat
+        tomcatJdbcVersion = '8.5.19'
+
+        //Druid
+        druidVersion = '1.1.2'
+
+        //Atomikos
+        atomikosVersion = '4.0.4'
+
+        //JTA
+        jtaVersion = '1.1'
+
+        //Ehcache
+        ehcache2Version = '2.10.4'
+
+        echache3Version = '3.3.1'
+
+        /* DB */
+        //MysqlConnectorJava
+        mysqlConnectorJavaVersion = '6.0.6'
+
+        //MariaDBJavaClient
+        mariaDBJavaClientVersion = '2.1.0'
+
+        //MongoJavaDrive
+        mongoJavaDriveVersion = '3.5.0'
+
+        //JRedis
+        jRedisVersion = '2.9.0'
+
+        //MemcachedJavaClient
+        memcachedJavaClientVersion = '3.0.2'
+
+        /* JSON */
+        //Jackson
+        jacksonVersion = '2.9.0'
+
+        //Gson
+        gsonVersion = '2.8.1'
+
+        //Fastjson
+        fastjsonVersion = '1.2.36'
+
+        //Cglib
+        cglibVersion = '3.2.5'
+
+        //Aspectj
+        aspectjVersion = '1.8.10'
+
+        /* RabbitMQ */
+        //AmqpClientVersion
+        amqpClientVersion = '4.2.0'
+
+        //Scala
+        scalaVersion = '2.12.3'
+
+        //Groovy
+        groovyAllVersion = '2.4.12'
+
+        //JMS
+        jmsVersion = '1.1'
+
+        /* Web */
+        //JetbrickTemplate
+        jetbrickTemplateVersion = '2.1.2'
+
+        //ValidationApi
+        validationApiVersion = '2.0.0.Final'
+
+        //Servlet
+        servletApiVersion = '3.1.0'
+
+        //JSTL
+        jstlVersion = '1.2'
+
+        /* Test And Log */
+        //Logback
+        logbackVersion = '1.2.3'
+
+        //LogbackExtSpring
+        logbackExtSpringVersion = '0.1.4'
+
+        //Log4j
+        log4jVersion = '2.8.2'
+
+        //Slf4j
+        slf4jVersion = '1.7.25'
+
+        //Junit
+        junitVersion = '4.12'
+    }
+
+    dependencies {
+
+        compile (
+                "org.apache.logging.log4j:log4j-api:$log4jVersion",
+                "org.apache.logging.log4j:log4j-core:$log4jVersion",
+                "org.apache.logging.log4j:log4j-web:$log4jVersion",
+                "org.slf4j:slf4j-api:$slf4jVersion",
+        )
+
+        testCompile (
+                "junit:junit:$junitVersion",
+                "org.springframework:spring-test:$springFrameworkVersion"
+        )
+
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+    }
+}
+
+configure(allprojects.findAll { it.name.endsWith('web') }) {
+    apply plugin: 'war'
+}

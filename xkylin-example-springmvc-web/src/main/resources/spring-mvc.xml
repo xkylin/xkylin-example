@@ -48,6 +48,8 @@
 			</props>
 		</property>
 	</bean>
+	<!-- 静态资源访问权 -->
+	<!--<mvc:resources mapping="/assets/**" location="/assets/" />-->
 
 	<!-- 拦截器 -->
 	<!--<mvc:interceptors>-->

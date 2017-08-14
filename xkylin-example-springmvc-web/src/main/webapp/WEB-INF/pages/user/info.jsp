@@ -13,6 +13,7 @@
 </head>
 <body>
     <h1>新增用户</h1>
+    <img src="${pageContext.request.contextPath}/assets/image/q.jpg">
     <span style="color: red;"><b>${ex.message}</b></span>
     <form action="${pageContext.request.contextPath}/user/register" method="post" enctype="multipart/form-data">
         <label for="userName">账号:</label>
